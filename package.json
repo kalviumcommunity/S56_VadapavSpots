@@ -1,0 +1,11 @@
+{
+  "name": "s56_vadapavspots",
+  "version": "1.0.0",
+  "description": "In Maharashtra, there is a very famous street food named VADAPAV which you will get all over the Maharashtra. But the taste varies from place to place. So the idea for this project is to filter out the famous spots in Pune city where you can get delicious Vadapav to eat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
