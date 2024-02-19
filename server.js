@@ -1,5 +1,5 @@
 const express = require("express")
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 const app = express()
 
 app.get("/ping", (req, res) => {
@@ -9,6 +9,12 @@ app.get("/ping", (req, res) => {
         console.log(err)
     }
 })
+
+app.use((err, req, res, next) => {
+    res.status(500).send({
+        error: err.message
+    });
+});
 
 app.listen(port, (err) => {
     if (err) {
