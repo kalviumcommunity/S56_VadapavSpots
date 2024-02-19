@@ -1,11 +1,15 @@
 const express = require("express")
 
-var app = express()
+const app = express()
 
-app.get("/ping" , (req , res)=>{
+app.get("/ping", (req, res) => {
     res.send("pong")
 })
 
-app.listen(3000 , ()=>{
-    console.log("Server has Started..!! 🚀")
+app.listen(process.env.PORT || 3000, (err) => {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log("Server has Started..!! 🚀")
+    }
 })
