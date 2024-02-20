@@ -16,6 +16,10 @@ app.use((err, req, res, next) => {
     });
 });
 
+app.get("/" , (req , res)=>{
+    res.send("Server Made and Deployed Sucessfully.. !! Welcome to the Home Page.")
+})
+
 app.listen(port, (err) => {
     if (err) {
         console.log(err)
