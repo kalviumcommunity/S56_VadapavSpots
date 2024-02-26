@@ -3,23 +3,43 @@ const express = require("express")
 const route1 = express.Router()
 
 route1.get("/getspot" , (req , res)=>{
-    res.json({"GetRequest" : "Successful"})
+    try{
+        res.json({"GetRequest" : "Successful"})
+    }catch(err){
+        res.json({"error" : err})
+    }
 })
 
 route1.post("/addspot" , (req,res)=>{
-    res.json({"PostData" : "Successful"})
+    try{
+        res.json({"PostData" : "Successful"})
+    }catch(err){
+        res.json({"error" : err})
+    }
 })
 
 route1.put("/updatespot",(req,res)=>{
-    res.json({"UpdateData" : "Successful"})
+    try{
+        res.json({"UpdateData" : "Successful"})
+    }catch(err){
+        res.json({"error" : err})
+    }
 })
 
 route1.patch("/updatespotinfo",(req,res)=>{
-    res.json({"UpdateSingleData" : "Successful"})
+    try{
+        res.json({"UpdateSingleData" : "Successful"})
+    }catch(err){
+        res.json({"error" : err})
+    }
 })
 
 route1.delete("/deletespot",(req,res)=>{
-    res.json({"DeleteData" : "Successful"})
+    try{
+        res.json({"DeleteData" : "Successful"})
+    }catch(err){
+        res.json({"error" : err})
+    }
 })
 
 module.exports = {
