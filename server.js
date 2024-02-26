@@ -2,6 +2,7 @@ const { connectToDb , isConnected} =  require("./db.js")
 const express = require("express")
 const port = process.env.PORT || 3000
 const app = express()
+const { route1 } = require("./Routes/routes.js")
 
 connectToDb()
 
@@ -12,6 +13,8 @@ app.get("/ping", (req, res) => {
         console.log(err)
     }
 })
+
+app.use(route1)
 
 app.use((err, req, res, next) => {
     res.status(500).send({
