@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC:wght@300;400;500;600;700&display=swap');
+
+.navbar{
+    letter-spacing: 3px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Holtwood One SC", serif;
+    padding: 10px 50px;
+}
+
+.flex{
+    display: flex;
+}
+
+.logoside img{
+    width: 80px;
+    height: 80px;
+}
+
+.logoside{
+    align-items: center;
+    font-family: "Holtwood One SC", serif;
+    color: #FFB800;
+    text-align: center;
+    line-height: 1;
+    font-size: 17px;
+}
+
+.logoside h3{
+    margin: 0;
+}
+
+.btns{
+    align-items: center;
+    font-size: 13px;
+}
+
+.btns h2{
+    font-family: "Holtwood One SC",serif;
+    font-weight: 500;
+}
+
+.btns button{
+    background-color: #FFB800;
+    color: white;
+    letter-spacing: 3px;
+    border: none;
+    height: 50px;
+    padding: 0px 20px;
+    font-family: "Holtwood One SC", serif;
+    margin-left: 30px;
+    border-radius: 5px;
+}
