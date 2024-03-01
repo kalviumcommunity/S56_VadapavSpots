@@ -6,7 +6,6 @@ import share from "../assets/Share.png"
 import "./Card.css"
 
 const Card = (props) => {
-    console.log(props)
   return (
     <div className='card'>
         <div className='imgdiv'>
