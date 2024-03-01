@@ -6,10 +6,15 @@
     align-items: center;
     font-family: "Holtwood One SC", serif;
     padding: 10px 50px;
+    box-shadow: 0 2px 10px 0 rgb(66, 66, 66);
 }
 
 .flex{
     display: flex;
+}
+
+.link{
+    text-decoration: none;
 }
 
 .logoside img{

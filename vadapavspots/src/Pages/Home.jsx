@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Components/Navbar'
 import HomeImage from "../assets/HomeImage.png"
 import "./Home.css"
+import {Link} from "react-router-dom"
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
             <div className='content'>
                 <h1>"Taste the <br />tradition, feel the passion”</h1>
                 <h4> Explore the city's iconic VadaPav destinations with us!</h4>
-                <button>EXPLORE</button>
+                <Link to="/locations"><button>EXPLORE</button></Link>
             </div>
 
             <div className='imgDiv'>
