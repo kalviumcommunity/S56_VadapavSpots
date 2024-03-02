@@ -6,13 +6,14 @@ import share from "../assets/Share.png"
 import "./Card.css"
 
 const Card = (props) => {
+    console.log(props)
   return (
     <div className='card'>
         <div className='imgdiv'>
-            <img src={props.image} className='Mainimg'/>
+            <img src={props.imageUrl} className='Mainimg'/>
         </div>
         <div className='contentdiv'>
-            <h3>{props.shopName}</h3>
+            <h3>{props.name}</h3>
             <div className='flex-cen rating'>
                 <h4>{props.rating} </h4>
                 <img src={Star}/>

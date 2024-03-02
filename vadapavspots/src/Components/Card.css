@@ -37,6 +37,10 @@ h3{
     font-family: "Holtwood One SC" , sans-serif;
     font-weight: 400;
     font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    width: 300px; 
 }
 
 .rating{
@@ -59,7 +63,7 @@ h4{
 }
 
 .location h4{
-    width: 150px;
+    width: 120px;
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;    
