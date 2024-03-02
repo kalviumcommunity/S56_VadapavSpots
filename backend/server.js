@@ -2,10 +2,10 @@ const { connectToDb , isConnected} =  require("./db.js")
 const express = require("express")
 const port = process.env.PORT || 3000
 const cors = require("cors")
-app.use(cors())
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const { route1 } = require("./Routes/routes.js")
 const { userModel } = require("./user_schema.js")
