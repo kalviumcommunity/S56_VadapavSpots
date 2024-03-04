@@ -33,6 +33,7 @@
 
 .logoside h3{
     margin: 0;
+    width: fit-content;
 }
 
 .btns{
