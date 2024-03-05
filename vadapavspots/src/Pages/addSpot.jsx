@@ -49,7 +49,7 @@ const AddSpot = () => {
 
         if (showError.name==false && showError.rating==false && showError.location==false && showError.timing==false && showError.image==false && showError.dir==false){
             console.log(inputValues)
-            axios.post("https://ayush-s56-vadapavspots.onrender.com/" , {
+            axios.post("https://ayush-s56-vadapavspots.onrender.com/createdata" , {
                 name : inputValues.name,
                 rating : inputValues.rating,
                 timing : inputValues.timing,
