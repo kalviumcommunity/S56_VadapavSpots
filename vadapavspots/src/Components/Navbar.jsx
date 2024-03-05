@@ -3,7 +3,7 @@ import LogoImage from "../assets/LogoImage.png"
 import "./Navbar.css"
 import {Link} from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({showbutton}) => {
   return (
     <div className='flex navbar'>
         <Link to="/" className='link'><div className='flex logoside'>
@@ -17,6 +17,7 @@ const Navbar = () => {
         <div className='flex btns'>
             <h2>LOGIN</h2>
             <button>REGISTER</button>
+            {showbutton && <Link to="/addspot"><button id='addItembtn'>+</button></Link>}
         </div>
 
     </div>

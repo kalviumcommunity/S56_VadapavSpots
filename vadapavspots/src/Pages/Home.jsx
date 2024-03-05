@@ -7,7 +7,7 @@ import {Link} from "react-router-dom"
 const Home = () => {
   return (
     <div style={{width:"100%"}}>
-        <Navbar />
+        <Navbar showbutton={false} />
 
         <div className='flex home'>
             <div className='content'>
