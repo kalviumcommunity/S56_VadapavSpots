@@ -22,6 +22,11 @@ app.get("/getdata" , async (req,res)=>{
     }
 })
 
+app.post("/createdata" , (req , res)=>{
+    userModel.create(req.body).then((el)=> res.json(el))
+    .catch(err => res.json(err))
+})
+
 app.get("/ping", (req, res) => {
     try {
         res.send("pong")

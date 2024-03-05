@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap');
+
+.addspot-content-2{
+    width: 400px;
+    height: 536px;
+    background-image: url("../assets/formImage.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120% 100%;
+    border-radius: 0 10px 10px 0;
+}
+
+.addspot-content{
+    background-color: #efefef;
+    justify-content: center;
+    align-items: center;
+    padding: 46px 0px;
+}
+
+.addspot-content-div-cont{
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+
+.addspot-content-1{
+    border-radius: 10px 0 0 10px;
+    height: fit-content;
+    text-align: center;
+    flex-direction: column;
+    padding: 0px 50px;
+    background-color: white;
+}
+
+.addspot-content-1 h1{
+    font-family: "Holtwood One SC" , sans-serif;
+    margin: 30px 0px;
+}
+
+input[type="submit"]{
+    width: 100px;
+    background-color: #FFB800;
+    color: white;
+    font-family: "Holtwood One SC" , sans-serif;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+form button{
+    width: 100px;
+    border: 2px solid #FFB800;
+    font-family: "Holtwood One SC" , sans-serif;
+    padding: 8px;
+    color: #FFB800;
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-btns{
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0px;
+}
+
+input[type="text"] , input[type="number"]{
+    width: 250px;
+    font-size: 15px;
+    background-color: #efefef;
+    border: none;
+    padding: 10px;
+    outline: #FFB800;
+    border-radius: 4px;
+}
+
+label{
+    font-family: "Kadwa", serif;
+    margin-right: 20px;
+}
+
+.entry{
+    margin-bottom: 20px;
+    justify-content: end;
+}
+
+button:active{
+    transform: scale(0.9);
+}
+
+input[type="submit"]:active{
+    transform: scale(0.9);
+}

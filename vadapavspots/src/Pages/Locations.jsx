@@ -12,7 +12,7 @@ const Locations = () => {
   useEffect(()=>{
     axios.get("https://ayush-s56-vadapavspots.onrender.com/getdata")
       .then((res)=>{
-        console.log(res.data)
+        // console.log(res.data)
         setData(res.data)
       })
       .catch((err)=>{
@@ -23,7 +23,7 @@ const Locations = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar showbutton={true}/>
       <div  className='flex-cen' style={{flexDirection:"column"}}>
 
         <h1>LOCATIONS</h1>
