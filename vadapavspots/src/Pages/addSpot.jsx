@@ -5,6 +5,7 @@ import {Link , useNavigate} from "react-router-dom"
 import error from "../assets/Error.png"
 import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
 
 const AddSpot = () => {
 
