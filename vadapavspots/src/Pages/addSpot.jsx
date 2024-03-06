@@ -57,14 +57,18 @@ const AddSpot = () => {
                 imageUrl : inputValues.image,
                 direction : inputValues.dir
             }).then((res)=>{
+                console.log(res)
                 console.log("Submitted")
-                // showSuccessToast()
-                // setTimeout(()=>{
-                navigate("/locations")
-                // },2000)
+                showSuccessToast()
+                setTimeout(()=>{
+                    navigate("/locations")
+                },2000)
+            }).catch((err)=>{
+                console.log(err)
+                showErrorToast("Some Error Occured in sending data..!!")
             })
         }else{
-            showErrorToast()
+            showErrorToast("Complete Data is Required..!!")
         }
     }
 
@@ -75,8 +79,8 @@ const AddSpot = () => {
         });
       };
 
-    const showErrorToast = () => {
-        toast.error('Complete Data is required..!!', {
+    const showErrorToast = (msg) => {
+        toast.error(msg, {
           position: "top-center",
           autoClose:1000
         });
