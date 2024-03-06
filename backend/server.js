@@ -27,6 +27,18 @@ app.post("/createdata" , (req , res)=>{
     .catch(err => res.json(err))
 })
 
+app.put("/updatespot/:id" , async (req, res)=>{
+    const id = req.params.id
+    console.log(req.body , id)
+    try{
+       let newdata = await userModel.findByIdAndUpdate({_id:id},req.body,{ new: true })
+        res.send(newdata)
+    }catch(err){
+        res.send(err)
+    }
+        
+})
+
 app.get("/ping", (req, res) => {
     try {
         res.send("pong")

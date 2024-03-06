@@ -1,24 +1,31 @@
-import React , { useState }from 'react'
+import React , {useState , useEffect} from 'react'
 import Navbar from '../Components/Navbar'
 import "./addSpot.css"
-import {Link , useNavigate} from "react-router-dom"
+import {Link , useNavigate , useParams} from "react-router-dom"
 import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 
-const AddSpot = () => {
-
-    let showError = {
-        name:false,
-        rating:false,
-        location:false,
-        timing:false,
-        image:false,
-        dir:false
-    }
-
-    const [inputValues , setInput] = useState({name:"",rating:0,location:"",timing:"",image:"",dir:""})
+const UpdateSpot = () => {
+    
+    const {id} = useParams() 
+    const [inputValues , setInput] = useState({})
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        axios.get("https://ayush-s56-vadapavspots.onrender.com/getdata").then((res)=>{
+            let data = res.data.filter((el)=>{
+                if(el._id === id.slice(1,id.length)){
+                    return el
+                }
+            })
+            setInput(data[0])
+        }).catch((err)=>{
+            console.log(err)
+        })
+    },[])
+
+    console.log(inputValues)
 
     let handleChange = (e) =>{
         setInput((prev) => ({...prev , [e.target.name] : e.target.value}))
@@ -27,48 +34,24 @@ const AddSpot = () => {
     let handleSubmit = (e) =>{
         e.preventDefault()
 
-        if (inputValues.name == ""){
-            showError.name = true
-        }
-        if (inputValues.rating == 0){
-            showError.rating = true
-        }
-        if (inputValues.location == ""){
-            showError.location = true
-        }
-        if (inputValues.timing == ""){
-            showError.timing = true
-        }
-        if (inputValues.image == ""){
-            showError.image = true
-        }
-        if (inputValues.dir == ""){
-            showError.dir = true
-        }
-
-        if (showError.name==false && showError.rating==false && showError.location==false && showError.timing==false && showError.image==false && showError.dir==false){
-            console.log(inputValues)
-            axios.post("https://ayush-s56-vadapavspots.onrender.com/createdata" , {
-                name : inputValues.name,
-                rating : inputValues.rating,
-                timing : inputValues.timing,
-                location : inputValues.location,
-                imageUrl : inputValues.image,
-                direction : inputValues.dir
-            }).then((res)=>{
-                console.log(res)
-                console.log("Submitted")
-                showSuccessToast('Data Added Successfully')
+        if (inputValues.name != "" && inputValues.rating != "" && inputValues.location != "" && inputValues.timing != "" && inputValues.imageUrl != "" && inputValues.direction != ""){
+            axios.put(`https://ayush-s56-vadapavspots.onrender.com/updatespot/${id}`,{name:inputValues.name , rating:inputValues.rating , location:inputValues.location , timing:inputValues.timing , imageUrl:inputValues.imageUrl, direction:inputValues.direction})
+            .then((el)=>{
+                console.log(el)
+                console.log("Updated" , inputValues)
+                showSuccessToast("Data is updated..!!")
                 setTimeout(()=>{
                     navigate("/locations")
-                },2000)
-            }).catch((err)=>{
+                },1000)
+            })
+            .catch((err)=>{
                 console.log(err)
                 showErrorToast("Some Error Occured in sending data..!!")
             })
         }else{
-            showErrorToast("Complete Data is Required..!!")
+            showErrorToast("Complete Information is required.!")
         }
+            
     }
 
     const showSuccessToast = (msg) => {
@@ -85,6 +68,9 @@ const AddSpot = () => {
         });
       };
 
+    
+
+
   return (
     <div>
       <Navbar showbutton={true}/>
@@ -92,41 +78,41 @@ const AddSpot = () => {
         <div className='addspot-content flex'>
             <div className='addspot-content-div-cont flex'>
                 <div className='addspot-content-1 flex'>
-                    <h1>ADD SPOT</h1>
+                    <h1> UPDATE SPOT</h1>
 
                     <form onSubmit={handleSubmit}>  
                         <div className='entry flex'>
                             <label>Name of Shop : </label>
-                            <input type="text" name="name" onChange={handleChange}/>
+                            <input type="text" name="name" defaultValue={inputValues.name} onChange={handleChange}/>
                         </div>
 
                         <div className='entry flex'>
                             <label>Rating of Shop : </label>
-                            <input type="number" name="rating" onChange={handleChange}/>
+                            <input type="number" step="any" name="rating" defaultValue={inputValues.rating} onChange={handleChange}/>
                         </div>
 
                         <div className='entry flex'>
                             <label>Location : </label>
-                            <input type="text" name="location" onChange={handleChange}/>
+                            <input type="text" name="location" defaultValue={inputValues.location} onChange={handleChange}/>
                         </div>
 
                         <div className='entry flex'>
                             <label>Timing : </label>
-                            <input type="text" name="timing" onChange={handleChange}/>
+                            <input type="text" name="timing" defaultValue={inputValues.timing} onChange={handleChange}/>
                         </div>
 
                         <div className='entry flex'>
                             <label>Image URL : </label>
-                            <input type="text" name="image" onChange={handleChange}/>
+                            <input type="text" name="image" defaultValue={inputValues.imageUrl} onChange={handleChange}/>
                         </div>
 
                         <div className='entry flex'>
                             <label>Directions URL : </label>
-                            <input type="text" name="dir" onChange={handleChange}/>
+                            <input type="text" name="dir" defaultValue={inputValues.direction} onChange={handleChange}/>
                         </div>
 
                         <div className='form-btns flex'>
-                            <input type="submit" value="Add Spot" />
+                            <input type="submit" value="Update" />
                             <Link to="/locations" ><button>CANCEL</button></Link>
                         </div>
                     </form>
@@ -142,4 +128,4 @@ const AddSpot = () => {
   )
 }
 
-export default AddSpot
+export default UpdateSpot

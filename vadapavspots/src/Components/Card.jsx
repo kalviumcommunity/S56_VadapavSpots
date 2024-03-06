@@ -4,9 +4,15 @@ import location from "../assets/Location.png"
 import timing from "../assets/Time.png"
 import share from "../assets/Share.png"
 import "./Card.css"
+import {Link} from "react-router-dom"
 
 const Card = (props) => {
     // console.log(props)
+
+    let handleDelete = () =>{
+
+    }
+
   return (
     <div className='card'>
         <div className='imgdiv'>
@@ -30,8 +36,8 @@ const Card = (props) => {
                 </div>
             </div>
             <div className='flex-cen buttons'>
-                <button className='dirbtn'>Directions</button>
-                <button className='sharebtn flex-cen'><img src={share}/> Share</button>
+                <Link to={`/updatespot/:${props.id}`} ><button className='dirbtn'>Update</button></Link>
+                <button className='sharebtn flex-cen' onClick={handleDelete}>Delete</button>
             </div>
         </div>
     </div>
