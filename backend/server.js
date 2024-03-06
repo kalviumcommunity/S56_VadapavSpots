@@ -27,6 +27,17 @@ app.post("/createdata" , (req , res)=>{
     .catch(err => res.json(err))
 })
 
+app.put("/updatespot/:id" , (req, res)=>{
+    const id = req.params.id
+    userModel.findByIdAndUpdate({_id:id},{name:req.body.name , rating:req.body.rating , location:req.body.location , timing:req.body.timing , imageUrl:req.body.imageUrl, direction:req.body.direction})
+        .then((el)=>{
+            res.json(el)
+        })
+        .catch((err)=>{
+            res.json(err)
+        })
+})
+
 app.get("/ping", (req, res) => {
     try {
         res.send("pong")
