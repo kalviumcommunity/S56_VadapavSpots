@@ -15,7 +15,7 @@ const UpdateSpot = () => {
     useEffect(()=>{
         axios.get("https://ayush-s56-vadapavspots.onrender.com/getdata").then((res)=>{
             let data = res.data.filter((el)=>{
-                if(el._id === id.slice(1,id.length)){
+                if(el._id === id){
                     return el
                 }
             })
@@ -25,7 +25,7 @@ const UpdateSpot = () => {
         })
     },[])
 
-    console.log(inputValues)
+    // console.log(inputValues)
 
     let handleChange = (e) =>{
         setInput((prev) => ({...prev , [e.target.name] : e.target.value}))
@@ -36,18 +36,17 @@ const UpdateSpot = () => {
 
         if (inputValues.name != "" && inputValues.rating != "" && inputValues.location != "" && inputValues.timing != "" && inputValues.imageUrl != "" && inputValues.direction != ""){
             axios.put(`https://ayush-s56-vadapavspots.onrender.com/updatespot/${id}`,{name:inputValues.name , rating:inputValues.rating , location:inputValues.location , timing:inputValues.timing , imageUrl:inputValues.imageUrl, direction:inputValues.direction})
-            .then((el)=>{
-                console.log(el)
-                console.log("Updated" , inputValues)
-                showSuccessToast("Data is updated..!!")
-                setTimeout(()=>{
-                    navigate("/locations")
-                },1000)
-            })
-            .catch((err)=>{
-                console.log(err)
-                showErrorToast("Some Error Occured in sending data..!!")
-            })
+                .then((el)=>{
+                    console.log(el)
+                    showSuccessToast("Data is updated..!!")
+                    setTimeout(()=>{
+                        navigate("/locations")
+                    },1000)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                    showErrorToast("Some Error Occured in sending data..!!")
+                })
         }else{
             showErrorToast("Complete Information is required.!")
         }

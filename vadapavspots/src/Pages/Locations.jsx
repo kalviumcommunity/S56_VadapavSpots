@@ -9,16 +9,18 @@ const Locations = () => {
 
   const [data , setData] = useState([])
 
-  useEffect(()=>{
+  function getData(){
     axios.get("https://ayush-s56-vadapavspots.onrender.com/getdata")
       .then((res)=>{
-        // console.log(res.data)
         setData(res.data)
       })
       .catch((err)=>{
         console.log(err)
       })
-      
+  }
+
+  useEffect(()=>{
+    getData()
   },[])
 
   return (
