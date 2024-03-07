@@ -31,7 +31,7 @@ const Locations = () => {
         <h1>LOCATIONS</h1>
         <div className='grid-cont'>
             {data.map((ele,i)=>{
-                return <Card key={i} id={ele._id} name={ele.name} rating={ele.rating} location={ele.location} timing={ele.timing} direction={ele.direction} imageUrl={ele.imageUrl}/>
+                return <Card key={i} getData={getData} id={ele._id} name={ele.name} rating={ele.rating} location={ele.location} timing={ele.timing} direction={ele.direction} imageUrl={ele.imageUrl}/>
             })}
         </div>
     </div>
