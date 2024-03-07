@@ -36,7 +36,7 @@ const Card = (props) => {
                 </div>
             </div>
             <div className='flex-cen buttons'>
-                <Link to={`/updatespot/:${props.id}`} ><button className='dirbtn'>Update</button></Link>
+                <Link to={`/updatespot/${props.id}`} ><button className='dirbtn'>Update</button></Link>
                 <button className='sharebtn flex-cen' onClick={handleDelete}>Delete</button>
             </div>
         </div>
