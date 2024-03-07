@@ -2,24 +2,36 @@ import React from 'react'
 import Star from "../assets/Star.png"
 import location from "../assets/Location.png"
 import timing from "../assets/Time.png"
-import share from "../assets/Share.png"
 import "./Card.css"
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import axios from 'axios'
+import {toast  , ToastContainer} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = (props) => {
 
+    const navigate = useNavigate()
     
     let handleDelete = () =>{
         console.log(props.id)
         axios.delete(`https://ayush-s56-vadapavspots.onrender.com/deletespot/${props.id}`)
         .then((res)=>{
                 console.log(res)
+                window.location.reload()
+                showSuccessToast("Data Deleted Successfully..!!")
+                props.getData()
             })
             .catch((err)=>{
                 console.log(err)    
             })
     }
+
+    const showSuccessToast = (msg) => {
+        toast.success(msg, {
+          position: "top-center",
+          autoClose:1000
+        });
+      };
 
   return (
     <div className='card'>
@@ -48,6 +60,9 @@ const Card = (props) => {
                 <button className='sharebtn flex-cen' onClick={handleDelete}>Delete</button>
             </div>
         </div>
+
+        <ToastContainer />
+
     </div>
   )
 }
