@@ -38,6 +38,19 @@ app.put("/updatespot/:id" , async (req, res)=>{
         
 })
 
+app.delete("/deletespot/:id" , async (req,res)=>{
+    const id = req.params.id;
+    console.log(id)
+    try{
+        userModel.findByIdAndDelete({_id:id})
+            .then((el)=>{
+                res.send(el)
+            })
+    }catch(err){
+        res.send(err)
+    }
+})
+
 app.get("/ping", (req, res) => {
     try {
         res.send("pong")

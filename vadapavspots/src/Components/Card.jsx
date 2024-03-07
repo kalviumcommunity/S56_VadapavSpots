@@ -5,12 +5,20 @@ import timing from "../assets/Time.png"
 import share from "../assets/Share.png"
 import "./Card.css"
 import {Link} from "react-router-dom"
+import axios from 'axios'
 
 const Card = (props) => {
-    // console.log(props)
 
+    
     let handleDelete = () =>{
-
+        console.log(props.id)
+        axios.delete(`https://ayush-s56-vadapavspots.onrender.com/deletespot/${props.id}`)
+        .then((res)=>{
+                console.log(res)
+            })
+            .catch((err)=>{
+                console.log(err)    
+            })
     }
 
   return (
