@@ -3,21 +3,18 @@ import Star from "../assets/Star.png"
 import location from "../assets/Location.png"
 import timing from "../assets/Time.png"
 import "./Card.css"
-import {Link,useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import axios from 'axios'
 import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 
 const Card = (props) => {
-
-    const navigate = useNavigate()
     
     let handleDelete = () =>{
         console.log(props.id)
         axios.delete(`https://ayush-s56-vadapavspots.onrender.com/deletespot/${props.id}`)
         .then((res)=>{
                 console.log(res)
-                window.location.reload()
                 showSuccessToast("Data Deleted Successfully..!!")
                 props.getData()
             })
