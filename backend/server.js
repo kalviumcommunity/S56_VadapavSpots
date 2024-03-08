@@ -2,6 +2,7 @@ const { connectToDb , isConnected} =  require("./db.js")
 const express = require("express")
 const port = process.env.PORT || 3000
 const cors = require("cors")
+const {validateData} = require("./validator.js")
 
 const app = express()
 app.use(express.json())
@@ -23,6 +24,13 @@ app.get("/getdata" , async (req,res)=>{
 })
 
 app.post("/createdata" , (req , res)=>{
+    console.log(req.body)
+    const {error} = validateData(req.body);
+    // console.log(hello)
+    console.log(error)
+    if (error){
+        return res.status(400).json({error : "Provided Data is Valid"})
+    }
     userModel.create(req.body).then((el)=> res.json(el))
     .catch(err => res.json(err))
 })
