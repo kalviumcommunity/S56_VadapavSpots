@@ -29,8 +29,7 @@ app.post("/createdata" , (req , res)=>{
     // console.log(hello)
     console.log(error)
     if (error){
-        console.log(error)
-        return res.json(error)
+        return res.status(400).json({error : "Provided Data is Valid"})
     }
     userModel.create(req.body).then((el)=> res.json(el))
     .catch(err => res.json(err))
