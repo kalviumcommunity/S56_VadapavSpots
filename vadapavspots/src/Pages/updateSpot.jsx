@@ -6,7 +6,7 @@ import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 
-const UpdateSpot = () => {
+const UpdateSpot = ({loggedin}) => {
     
     const {id} = useParams() 
     const [inputValues , setInput] = useState({})
@@ -72,7 +72,7 @@ const UpdateSpot = () => {
 
   return (
     <div>
-      <Navbar showbutton={true}/>
+      <Navbar showbutton={true} loggedin={loggedin}/>
 
         <div className='addspot-content flex'>
             <div className='addspot-content-div-cont flex'>

@@ -6,7 +6,7 @@ import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 
-const AddSpot = () => {
+const AddSpot = ({loggedin}) => {
 
     let showError = {
         name:false,
@@ -87,7 +87,7 @@ const AddSpot = () => {
 
   return (
     <div>
-      <Navbar showbutton={true}/>
+      <Navbar showbutton={true} loggedin={loggedin}/>
 
         <div className='addspot-content flex'>
             <div className='addspot-content-div-cont flex'>

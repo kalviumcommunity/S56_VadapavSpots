@@ -5,7 +5,7 @@ import Card from '../Components/Card'
 import "./Locations.css"
 import axios from "axios"
 
-const Locations = () => {
+const Locations = ({loggedin}) => {
 
   const [data , setData] = useState([])
 
@@ -25,7 +25,7 @@ const Locations = () => {
 
   return (
     <div>
-      <Navbar showbutton={true}/>
+      <Navbar showbutton={true} loggedin={loggedin}/>
       <div  className='flex-cen' style={{flexDirection:"column"}}>
 
         <h1>LOCATIONS</h1>
