@@ -4,8 +4,9 @@ import {Link, useNavigate} from "react-router-dom"
 import {toast  , ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import "./LoginPage.css"
+import axios from "axios"
 
-const LoginPage = ({loggedin , setloggedin}) => {
+const LoginPage = () => {
 
     const [username , setUserName] = useState("")
     const [pass , setpass] = useState("")
@@ -13,14 +14,18 @@ const LoginPage = ({loggedin , setloggedin}) => {
 
     let handleLogin = () =>{
         if (username != "" && pass != ""){
-            document.cookie = `userName=${username}; expires=Sun, 1 January 9999 12:00:00 UTC;`
-            document.cookie = `password=${pass}; expires=Sun, 1 January 9999 12:00:00 UTC;`
-            console.log(document.cookie)
+            axios.post("https://ayush-s56-vadapavspots.onrender.com/auth" , {username: username , password : pass}).then((el)=>{
+                // console.log(el.data)
+                document.cookie = `token=${el.data}; expires=Sun, 1 January 9999 12:00:00 UTC`
+            })
             showSuccessToast("Login Successful.!!")
             setTimeout(()=>{
+                localStorage.setItem("loggedin" , true)
                 navigate("/")
-                setloggedin(true)
             },1500)        
+            document.cookie = `userName=${username}; expires=Sun, 1 January 9999 12:00:00 UTC;`
+            document.cookie = `password=${pass}; expires=Sun, 1 January 9999 12:00:00 UTC;`
+            // console.log(document.cookie)
         }else{
             showErrorToast("UserName and Password is Required..!!")
         }
@@ -42,7 +47,7 @@ const LoginPage = ({loggedin , setloggedin}) => {
 
   return (
     <div className='login-page'>
-        <Navbar loggedin={loggedin}/>
+        <Navbar/>
 
         <div className='flex main-cont'>
             <div className=' flex login-cont'>

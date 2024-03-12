@@ -3,6 +3,7 @@ const express = require("express")
 const port = process.env.PORT || 3000
 const cors = require("cors")
 const {validateData} = require("./validator.js")
+const jwt = require("jsonwebtoken")
 
 const app = express()
 app.use(express.json())
@@ -77,6 +78,14 @@ app.use((err, req, res, next) => {
 
 app.get("/" , (req , res)=>{
     res.json({DatabaseConnection: isConnected()? "Connected" : "Failed"})
+})
+
+app.post("/auth" , (req , res)=>{
+    let userDetails = req.body
+    // console.log(req.body)
+    let token = jwt.sign(userDetails.username , "ABC")
+    // console.log(token)
+    res.send(token)
 })
 
 app.listen(port, (err) => {
