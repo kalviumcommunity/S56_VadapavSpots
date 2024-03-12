@@ -9,16 +9,19 @@ import {Routes , Route} from "react-router-dom"
 
 function App() {
 
-  const [loggedin , setloggedin] = useState(false)
+  // const [loggedin , setloggedin] = useState(localStorage.getItem("loggedin") ? localStorage.getItem("loggedin") : false)
+  if (localStorage.getItem("loggedin") == null){
+    localStorage.setItem("loggedin" , false)
+  }
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home loggedin={loggedin} setloggedin={setloggedin}/>}/>
-        <Route path="/locations" element={<Locations  loggedin={loggedin}/>}/>
-        <Route path="/addspot" element={<AddSpot  loggedin={loggedin}/>}/>
-        <Route path="/updatespot/:id" element={<UpdateSpot  loggedin={loggedin}/>}/>
-        <Route path="/login" element={<LoginPage  loggedin={loggedin} setloggedin={setloggedin}/>} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/locations" element={<Locations />}/>
+        <Route path="/addspot" element={<AddSpot />}/>
+        <Route path="/updatespot/:id" element={<UpdateSpot/>}/>
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   )
