@@ -16,8 +16,8 @@ const AddSpot = () => {
         image:false,
         dir:false
     }
-
-    const [inputValues , setInput] = useState({name:"",rating:0,location:"",timing:"",image:"",dir:""})
+    let curruser = localStorage.getItem("curruser")
+    const [inputValues , setInput] = useState({name:"",rating:0,location:"",timing:"",image:"",dir:"",created_by:curruser})
     const navigate = useNavigate()
 
     let handleChange = (e) =>{
@@ -54,7 +54,8 @@ const AddSpot = () => {
                 timing : inputValues.timing,
                 location : inputValues.location,
                 imageUrl : inputValues.image,
-                direction : inputValues.dir
+                direction : inputValues.dir,
+                created_by : inputValues.created_by
             }).then((res)=>{
                 console.log(res)
                 console.log("Submitted")

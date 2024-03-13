@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./LoginPage.css"
 import axios from "axios"
 
-const LoginPage = () => {
+const LoginPage = ({users}) => {
 
     const [username , setUserName] = useState("")
     const [pass , setpass] = useState("")
@@ -14,10 +14,19 @@ const LoginPage = () => {
 
     let handleLogin = () =>{
         if (username != "" && pass != ""){
-            axios.post("https://ayush-s56-vadapavspots.onrender.com/auth" , {username: username , password : pass}).then((el)=>{
-                // console.log(el.data)
-                document.cookie = `token=${el.data}; expires=Sun, 1 January 9999 12:00:00 UTC`
+            let currUserData = users.filter((el)=>{
+                return el.name === username
             })
+            console.log(currUserData)
+            if (currUserData.length > 0){
+                localStorage.setItem("curruser" , username)
+            }else{
+                axios.post("https://ayush-s56-vadapavspots.onrender.com/auth" , {username: username , password : pass}).then((el)=>{
+                    // console.log(el.data)
+                    document.cookie = `token=${el.data}; expires=Sun, 1 January 9999 12:00:00 UTC`
+                })
+                localStorage.setItem("curruser" , username)
+            }
             showSuccessToast("Login Successful.!!")
             setTimeout(()=>{
                 localStorage.setItem("loggedin" , true)

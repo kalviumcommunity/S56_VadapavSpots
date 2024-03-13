@@ -1,4 +1,5 @@
 const express = require("express")
+const { userNameModel } = require("../user_schema")
 
 const route1 = express.Router()
 
