@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 const { route1 } = require("./Routes/routes.js")
-const { userModel } = require("./user_schema.js")
+const { userModel  , userNameModel} = require("./user_schema.js")
 
 connectToDb()
 
@@ -31,7 +31,7 @@ app.post("/createdata" , (req , res)=>{
     // console.log(hello)
     console.log(error)
     if (error){
-        return res.status(400).json({error : "Provided Data is Valid"})
+        return res.status(400).json({error : "Provided Data is Invalid"})
     }
     userModel.create(req.body).then((el)=> res.json(el))
     .catch(err => res.json(err))
@@ -85,8 +85,18 @@ app.post("/auth" , (req , res)=>{
     let userDetails = req.body
     // console.log(req.body)
     let token = jwt.sign(userDetails.username , process.env.SECRET)
-    // console.log(token)
+    userNameModel.create({name : userDetails.username})
     res.send(token)
+})
+
+app.get("/getusers" , async (req , res)=>{
+    try{
+        const data = await userNameModel.find({})
+        res.json(data)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({error : "Internal Server Error"})
+    }
 })
 
 app.listen(port, (err) => {

@@ -21,7 +21,6 @@ const Navbar = ({showbutton}) => {
       navigate('/login')
     }
   }
-  console.log(localStorage.getItem("loggedin"))
 
   return (
     <div className='flex navbar'>

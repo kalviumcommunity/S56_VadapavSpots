@@ -10,7 +10,8 @@ const dataSchema = Joi.object({
     timing : Joi.string().required(),
     location : Joi.string().required(),
     imageUrl : Joi.string().required(),
-    direction : Joi.string().required()
+    direction : Joi.string().required(),
+    created_by : Joi.string()
 })
 let validateData = validator(dataSchema)
 

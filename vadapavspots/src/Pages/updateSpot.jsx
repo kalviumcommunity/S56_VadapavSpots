@@ -35,7 +35,7 @@ const UpdateSpot = () => {
         e.preventDefault()
 
         if (inputValues.name != "" && inputValues.rating != "" && inputValues.location != "" && inputValues.timing != "" && inputValues.imageUrl != "" && inputValues.direction != ""){
-            axios.put(`https://ayush-s56-vadapavspots.onrender.com/updatespot/${id}`,{name:inputValues.name , rating:inputValues.rating , location:inputValues.location , timing:inputValues.timing , imageUrl:inputValues.imageUrl, direction:inputValues.direction})
+            axios.put(`https://ayush-s56-vadapavspots.onrender.com/updatespot/${id}`,{name:inputValues.name , rating:inputValues.rating , location:inputValues.location , timing:inputValues.timing , imageUrl:inputValues.imageUrl, direction:inputValues.direction, created_by: localStorage.getItem("curruser")})
                 .then((el)=>{
                     console.log(el)
                     showSuccessToast("Data is updated..!!")
