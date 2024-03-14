@@ -85,8 +85,12 @@ app.post("/auth" , (req , res)=>{
     let userDetails = req.body
     // console.log(req.body)
     let token = jwt.sign(userDetails.username , process.env.SECRET)
-    userNameModel.create({name : userDetails.username})
-    res.send(token)
+    try{
+        userNameModel.create({name : userDetails.username})
+        res.send(token)
+    }catch(err){
+        res.status(500).json({error : "Internal Server Error"})
+    }
 })
 
 app.get("/getusers" , async (req , res)=>{
