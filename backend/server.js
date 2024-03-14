@@ -85,7 +85,13 @@ app.post("/auth" , (req , res)=>{
     let userDetails = req.body
     // console.log(req.body)
     let token = jwt.sign(userDetails.username , process.env.SECRET)
-    userNameModel.create({name : userDetails.username})
+    try{
+        userNameModel.create({name : userDetails.username})
+    }catch(err){
+        res.status(500).send({
+            error: err.message
+        });
+    }
     res.send(token)
 })
 
