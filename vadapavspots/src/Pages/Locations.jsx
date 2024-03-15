@@ -49,7 +49,7 @@ const Locations = () => {
         </div>
         <div className='grid-cont'>
             {data.length == 0 ? "No Data Found" : data.map((ele,i)=>{
-                return <Card key={i} getData={getData} id={ele._id} name={ele.name} rating={ele.rating} location={ele.location} timing={ele.timing} direction={ele.direction} imageUrl={ele.imageUrl}/>
+                return <Card key={i} getData={getData} id={ele._id} name={ele.name} rating={ele.rating} location={ele.location} timing={ele.timing} direction={ele.direction} imageUrl={ele.imageUrl} created_by={ele.created_by}/>
             })}
         </div>
     </div>
