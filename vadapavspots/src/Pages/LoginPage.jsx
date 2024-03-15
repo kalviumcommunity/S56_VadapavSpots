@@ -29,7 +29,7 @@ const LoginPage = ({users}) => {
             }
             showSuccessToast("Login Successful.!!")
             setTimeout(()=>{
-                localStorage.setItem("loggedin" , true)
+                sessionStorage.setItem("loggedin" , true)
                 navigate("/")
             },1500)        
             document.cookie = `userName=${username}; expires=Sun, 1 January 9999 12:00:00 UTC;`

@@ -30,6 +30,8 @@ const Card = (props) => {
         });
       };
 
+    console.log(props.created_by , localStorage.getItem("curruser"))
+
   return (
     <div className='card'>
         <div className='imgdiv'>
@@ -53,8 +55,8 @@ const Card = (props) => {
                 </div>
             </div>
             <div className='flex-cen buttons'>
-                <Link to={`/updatespot/${props.id}`} ><button className='dirbtn'>Update</button></Link>
-                <button className='sharebtn flex-cen' onClick={handleDelete}>Delete</button>
+                {localStorage.getItem("curruser") == props.created_by ? <Link to={`/updatespot/${props.id}`} ><button className='dirbtn'>Update</button></Link> : ""}
+                {localStorage.getItem("curruser") == props.created_by ? <button className='sharebtn flex-cen' onClick={handleDelete}>Delete</button>: ""}
             </div>
         </div>
 

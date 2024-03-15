@@ -87,12 +87,11 @@ app.post("/auth" , (req , res)=>{
     let token = jwt.sign(userDetails.username , process.env.SECRET)
     try{
         userNameModel.create({name : userDetails.username})
+        res.send(token)
     }catch(err){
-        res.status(500).send({
-            error: err.message
-        });
+        res.status(500).json({error : "Internal Server Error"})
     }
-    res.send(token)
+
 })
 
 app.get("/getusers" , async (req , res)=>{
