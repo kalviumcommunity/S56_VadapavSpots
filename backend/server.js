@@ -91,6 +91,7 @@ app.post("/auth" , (req , res)=>{
     }catch(err){
         res.status(500).json({error : "Internal Server Error"})
     }
+
 })
 
 app.get("/getusers" , async (req , res)=>{
